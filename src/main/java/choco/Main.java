@@ -1,8 +1,5 @@
 package choco;
 
-
-import javax.naming.NameAlreadyBoundException;
-
 public class Main {
     public static void main(String[] args) {
         TwoPlusTwo twoPlusTwo = new TwoPlusTwo();
@@ -33,7 +30,10 @@ public class Main {
         Sudoku sudokuMax = new Sudoku(SudokuInstance.GRID_148);
         //sudoku1.solve();
         //sudoku1.solveAll();
-        sudokuMax.solve();
+        //sudokuMax.solve();
         //sudokuMax.solveAll();
+
+        Decomposition decomposition = new Decomposition(5);
+        decomposition.solve();
     }
 }

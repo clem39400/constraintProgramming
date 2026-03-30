@@ -71,7 +71,7 @@ public class Utils {
         int compteur = 0;
         Solution sol;
         while ((sol = solver.findSolution()) != null){
-            System.out.println("Solution = " + sol);
+            System.out.println(sol);
             compteur++;
         }
         System.out.println("Nombre de solutions = " + compteur);
