@@ -60,6 +60,8 @@ public class Sudoku extends SudokuAbstract implements ChocoSolver{
 
     @Override
     public void solve(){
+        System.out.println("Sudoku de départ");
+        displaySudoku(grid);
         Solver solver = buildSolver();
         if(solver.solve()){
             for(int i = 0; i < n; i++) {
@@ -74,6 +76,8 @@ public class Sudoku extends SudokuAbstract implements ChocoSolver{
 
     @Override
     public void solveAll() {
+        System.out.println("Sudoku de départ");
+        displaySudoku(grid);
         Solver solver = buildSolver();
         int nbSolutions = 0;
         while (solver.solve()){

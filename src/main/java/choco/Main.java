@@ -25,7 +25,7 @@ public class Main {
         //nQueen.solve();
         //nQueen.solveAll();
 
-        MagicSquare magicSquare = new MagicSquare(8);
+        MagicSquare magicSquare = new MagicSquare(4);
         //magicSquare.solve();
         //magicSquare.solveAll();
 
