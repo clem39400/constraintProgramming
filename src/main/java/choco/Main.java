@@ -21,7 +21,12 @@ public class Main {
         //vendingMachine.solve();
         //vendingMachine.solveAll();
 
-        NQueen nQueen = new NQueen(4);
-        nQueen.solveAll();
+        NQueen nQueen = new NQueen(8);
+        //nQueen.solve();
+        //nQueen.solveAll();
+
+        MagicSquare magicSquare = new MagicSquare(8);
+        //magicSquare.solve();
+        magicSquare.solveAll();
     }
 }

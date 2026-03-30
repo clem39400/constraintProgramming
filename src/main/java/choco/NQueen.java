@@ -2,9 +2,9 @@ package choco;
 
 import org.chocosolver.solver.Model;
 import org.chocosolver.solver.Solver;
+import org.chocosolver.solver.search.strategy.Search;
 import org.chocosolver.solver.variables.IntVar;
 
-import java.util.Arrays;
 
 public class NQueen implements ChocoSolver{
 
@@ -24,12 +24,18 @@ public class NQueen implements ChocoSolver{
         for(int i = 0; i < N; i++){
             for(int j = i+1; j < N; j++) {
 
-                //model.arithm(Q[i], "!=", Q[j], "-", j - i).post();
-                //model.arithm(Q[i], "!=", Q[j], "+", j - i).post();
-                model.distance(Q[i], Q[j], "!=", j - i).post();
+                /*
+                on veut |Q[i]-Q[j]| != j-i
+                donc Q[i]-Q[j] != j-i ET - Q[i] + Q[j] != j-i
+                d'où Q[i] != Q[j] + j-i ET Q[i] != Q[j] - (i - j)
+                 */
+
+                model.arithm(Q[i], "!=", Q[j], "-", j - i).post();
+                model.arithm(Q[i], "!=", Q[j], "+", j - i).post();
             }
         }
         Solver solver = model.getSolver();
+        solver.setSearch(Search.inputOrderLBSearch(Q));
         solver.showShortStatisticsOnShutdown();
         return solver;
     }
