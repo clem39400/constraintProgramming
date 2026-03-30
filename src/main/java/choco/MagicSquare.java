@@ -1,8 +1,8 @@
 package choco;
 
 import org.chocosolver.solver.Model;
-import org.chocosolver.solver.Solution;
 import org.chocosolver.solver.Solver;
+import org.chocosolver.solver.search.strategy.Search;
 import org.chocosolver.solver.variables.IntVar;
 
 public class MagicSquare extends MagicSquareAbstract implements ChocoSolver {
@@ -29,6 +29,7 @@ public class MagicSquare extends MagicSquareAbstract implements ChocoSolver {
                 all[i* n + j] = square[i][j];
             }
         }
+        //buildSolver().setSearch(Search.inputOrderLBSearch(all)); //pour prendre les éléments dans l'ordre (plus lent)
         model.allDifferent(all).post();
 
         // Somme des colones, lignes et des diagonales
@@ -55,7 +56,8 @@ public class MagicSquare extends MagicSquareAbstract implements ChocoSolver {
         //contraintes redondantes pour casser les symétries sinon on a toutes les rotations des chiffres
         model.arithm(square[0][0], "<", square[n-1][0]).post(); //on enlève les symétries sur les lignes
         model.arithm(square[0][0], "<", square[0][n-1]).post(); //on enlève les symétries sur les colones
-        model.arithm(square[0][n-1], "<", square[n-1][0]).post(); //on enlève les rotations
+        model.arithm(square[0][n-1], "<", square[n-1][0]).post(); //on enlève les rotations sur la diagonale
+        model.arithm(square[0][0], "<", square[n-1][n-1]).post(); // on enlève les rotations sur l'autre diagonale
 
         Solver solver = model.getSolver();
         solver.showShortStatisticsOnShutdown();

@@ -27,6 +27,13 @@ public class Main {
 
         MagicSquare magicSquare = new MagicSquare(8);
         //magicSquare.solve();
-        magicSquare.solveAll();
+        //magicSquare.solveAll();
+
+        Sudoku sudoku1 = new Sudoku(SudokuInstance.GRID_001);
+        Sudoku sudokuMax = new Sudoku(SudokuInstance.GRID_148);
+        //sudoku1.solve();
+        //sudoku1.solveAll();
+        sudokuMax.solve();
+        //sudokuMax.solveAll();
     }
 }
